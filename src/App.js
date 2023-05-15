@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import QuizQuestion from "./component/QuizQuestion";
+import QuestionOptions from "./component/QuestionOptions";
+import NextQuestion from "./component/NextQuestion";
+import Header from "./component/Layout/Header";
+import Cart from "./UI/Cart";
+import Score from "./component/Score";
+import Questions from "./helper/data";
+import { useSelector } from "react-redux";
 
-function App() {
+const App = () => {
+  const currentQues = useSelector((state) => state.ques.currentQues);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      {Questions.length === currentQues + 1 ? (
+        <Cart>
+          <Score />
+        </Cart>
+      ) : (
+        <Cart>
+          <div>
+            <QuizQuestion />
+            <QuestionOptions />
+            <NextQuestion />
+          </div>
+        </Cart>
+      )}
+    </>
   );
-}
+};
 
 export default App;
