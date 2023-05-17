@@ -1,7 +1,6 @@
 import React from "react";
 import QuizQuestion from "./component/QuizQuestion";
 import QuestionOptions from "./component/QuestionOptions";
-import NextQuestion from "./component/NextQuestion";
 import Header from "./component/Layout/Header";
 import Cart from "./UI/Cart";
 import Score from "./component/Score";
@@ -20,11 +19,8 @@ const App = () => {
         </Cart>
       ) : (
         <Cart>
-          <div>
-            <QuizQuestion />
-            <QuestionOptions />
-            <NextQuestion />
-          </div>
+          <QuizQuestion currentQues={currentQues} />
+          <QuestionOptions currentQues={currentQues} />
         </Cart>
       )}
     </>

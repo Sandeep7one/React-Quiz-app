@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   currentQues: 0,
+  score: 0,
 };
 
 const quesSlice = createSlice({
@@ -12,8 +13,15 @@ const quesSlice = createSlice({
       state.currentQues += action.payload;
     },
     currentQues: (state, action) => {
+      state.score = 0;
       state.currentQues = 0;
     },
+    updateScore: (state, action) => {
+      state.score += action.payload;
+    },
+    // emptyScore: (state, action) => {
+    //   state.score = [];
+    // },
   },
 });
 
